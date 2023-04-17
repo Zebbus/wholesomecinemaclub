@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <META NAME="robots" CONTENT="noindex">
+        <title>The Marketing Engineers</title>
+        <meta name="description" content="Partners in Data&Tech">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap' rel='stylesheet'>
+    <style>
+        
+        html {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+}   
+        body{
+            margin: 0;
+            background-color: #F8F8FF;
+            font-size: 14px;
+            font-family: 'Poppins';
+            font-weight: 300;
+            color:#303030;
+        }
+
+        a, a:visited, a:focus{
+            text-decoration: none;
+            border-bottom: 2px solid #E9B44C;
+            white-space: nowrap;
+            color: #303030;
+        }
+
+        a:hover{
+            background-color: #E9B44C;
+        }
+
+        .container{
+            display: block;
+            max-width: 450px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .block{
+            margin: 0 auto;
+            border: 3px solid #303030;
+            box-shadow: 8px 8px #474747;
+            width: auto;
+            vertical-align: top;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .line{
+            height: 40px;
+            width: 3px;
+            margin: 0 auto;
+            border-right: 3px solid #303030;
+        }
+
+        .logo{
+            font-size: 36px;
+            line-height: 36px;
+            width: 180px;
+            padding: 20px;
+        }
+
+        .tagline{
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .title{
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .text{
+            padding: 0 20px 20px;
+            text-align: justify;
+        }
+
+        .image{
+            padding: 0 20px 20px;
+        }
+
+        img{
+            max-width: 100%;
+        }
+
+        .col{
+            display: inline-block;
+            width: 200px;
+            vertical-align: top;
+        }
+
+        .teamtitle{
+            font-size: 16px;
+            font-weight: 400;
+            padding-bottom: 20px;
+        }
+        .function{
+            text-decoration: overline;
+            margin-bottom: 8px;
+        }
+
+        input {
+            display: block;
+    font-family: 'Poppins';
+    width: 200px;
+    text-align: left;
+    margin-bottom: 18px;
+    background: #F8F8FF;
+    padding: 5px;
+    border: none;
+    border: 3px solid;
+        }
+		.hidden {
+            max-height: 0;
+            transition: all 0.5s ease-out;
+		}
+
+      .expand{
+        max-height: 1000px;
+    transition: all 0.5s ease-in;
+      }
+
+      .footer{
+        font-size: 12px;
+        text-align: center;
+        width: 200px;
+        padding: 20px 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <div class="block logo">
+        The
+        Marketing
+        Engineers
+    <div class="tagline">Partners in Data&Tech</div>
+</div><div class="line"></div><div class="block">
+      <div class="title" onclick="expandDiv(1)">Marketing Data</div>
+      <div id="div1" class="hidden">
+        <div class="text">We help brands to collect, transform, analyze, visualize and activate their digital marketing data. This ranges from co-developing measurement plans to the implementation and integration of data funnels in their organizations and platforms;</div>
+        <div class="image"><img src="https://i.pinimg.com/564x/61/b9/71/61b9711e828c05fa490df8817a4cc809.jpg"></div>
+      </div>
+    </div><div class="line"></div><div class="block">
+      <div class="title" onclick="expandDiv(2)">Marketing Techology</div>
+      <div id="div2" class="hidden">
+        <div class="text">We are your guide in the marketing technology landscape and help you to select, implement and configure marketing technology to take your digital marketing to the next level;</div>
+      </div>
+    </div><div class="line"></div><div class="block">
+      <div class="title" onclick="expandDiv(3)">The Team</div>
+      <div id="div3" class="hidden">
+        <div class="text">The Marketing Engineers are part of the <a href="#">Goed Volk</a> collective. We have an experienced and specialized ‘core team’ and work with trusted partners to cover additional services;</div>
+        <div class="image"><img src="https://i.pinimg.com/564x/b9/3e/47/b93e47e19bf4212fee44788895d7b2a0.jpg"></div>
+        <div class="text"><div class="col">
+            <div class="teamtitle">Core team:</div>
+            <div class="name">Jan van Unnik</div>
+            <div class="function">Founder & Digital Architect</div>
+            <div class="name">Eric Žíla</div>
+            <div class="function">Marketing Engineer</div>
+        </div>
+        <div class="col">
+            <div class="teamtitle">Partners:</div>
+            <div class="name">Nubis</div>
+            <div class="function">Development Agency</div>
+            <div class="name">Geert Rus</div>
+            <div class="function">Digital Marketeer</div>
+            <div class="name">Zeynoun Albeik</div>
+            <div class="function">Digital Marketeer</div>
+            <div class="name">Wholesome Cinema Club</div>
+            <div class="function">Creative Powerhouse</div>
+        </div>
+    </div>
+      </div>
+    </div><div class="line"></div><div class="block">
+      <div class="title" onclick="expandDiv(4)">Contact</div>
+      <div id="div4" class="hidden">
+        <div class="text">
+            <label>Your name<input type="text"></label>
+            <label>Your email<input type="email"></label>
+            <label>What can we help you with?<input type="text"></label>
+            <input type="submit">
+        </div>
+      </div>
+      </div><div class="line"></div><div class="block footer">
+          <div><a href="#">Terms & Conditions</a></div>
+          <div>©The Marketing Engineers</div>
+        </div>
+    </div>
+    <script>
+		function expandDiv(divNum) {
+			var div = document.getElementById("div" + divNum);
+			if (div.className === "hidden") {
+				div.className = "expand";
+			} else {
+				div.className = "hidden";
+			}
+		}
+    </script>
+  </body>
+</html>
