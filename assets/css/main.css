@@ -151,10 +151,10 @@ a:hover,a:focus,.nav:hover,.nav:focus{
 }
 
 .footer a{
-    width: 28px;
-    height: 28px;
+    width: 18px;
+    height: 18px;
     display: inline-block;
-    padding: 0 20px 20px 0;
+    padding: 0 30px 30px 0;
 }
 
 svg:hover{
