@@ -1,192 +1,176 @@
-/* aladin-regular - latin */
+/* inter-tight-regular - latin */
 @font-face {
-    font-family: 'Aladin';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/aladin-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/aladin-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;     
-  }
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-tight-v7-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
-  /* amatic-sc-regular - latin */
+/* inter-tight-600 - latin */
 @font-face {
-    font-family: 'Amatic SC';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/amatic-sc-v24-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/amatic-sc-v24-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/inter-tight-v7-latin-600.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
-/* bebas-neue-regular - latin */
+/* inter-tight-900 - latin */
 @font-face {
-    font-family: 'Bebas Neue';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/bebas-neue-v9-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/bebas-neue-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* creepster-regular - latin */
-@font-face {
-    font-family: 'Creepster';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/creepster-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/creepster-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-/* limelight-regular - latin */
-@font-face {
-    font-family: 'Limelight';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/limelight-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/limelight-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;     
-  }
-
-  /* poppins-regular - latin */
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/poppins-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* rubik-glitch-regular - latin */
-@font-face {
-    font-family: 'Rubik Glitch';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/rubik-glitch-v2-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/rubik-glitch-v2-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;     
-  }
-
-  /* special-elite-regular - latin */
-@font-face {
-    font-family: 'Special Elite';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/special-elite-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/special-elite-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* staatliches-regular - latin */
-@font-face {
-    font-family: 'Staatliches';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-         url('../fonts/staatliches-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../fonts/staatliches-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/inter-tight-v7-latin-900.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
 html {
-    width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    position: relative;
-} 
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  position: relative;
+}
 
-body { 
-    background: #FAF9F6; 
-    color: #050609; 
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px; 
-    margin: 0;
+body {
+  background: #FAF9F6;
+  color: #050609;
+  font-family: 'Inter Tight';
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: all 1s ease 0s;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .container {
-    max-width: 450px;
-    padding: 20px;
-    margin: 0 auto;
-    font-weight: 100;
-  }
-
-.logo{
-    font-size: 5em;
-    height: 70px;
-    line-height: 70px;
+  position: relative;
+  max-width: 450px;
+  padding: 0px;
+  margin: 0 auto;
+  font-weight: 100;
 }
 
-.line{
-    border-top: 1px solid;
-    margin-top: 10px;
-    padding-top: 10px;
+.logo {
+  margin: 10px auto;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 70px;
+  line-height: 56px;
+  font-weight: 900;
 }
 
-.nav{
-    border-right: 1px solid;
-    padding-right: 5px;
-    margin-right: 5px;
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
 }
 
-.nav:nth-child(4) {
-    border: none;
+.content {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid;
 }
 
-a, a:visited{
-    color:inherit;
-    text-decoration: none;
+#nowshowing {
+  padding-left: 0;
+  border-left: none;
 }
 
-a:hover,a:focus,.nav:hover,.nav:focus{
-    font-weight: bold;
+.content:before {
+  position: absolute;
+  left: 0;
+  font-size: 10;
 }
 
-.footer a{
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    padding: 0 30px 30px 0;
+#home:before {
+  content: '01';
 }
 
-svg:hover{
-    transform: scale(1.1);
-    transition: all 1ms;
+#nowshowing:before {
+  content: '02';
 }
 
-.lights{
-    float: right;
-    display:inline-block;
-    padding: 0 0 20px 20px;
+#work:before {
+  content: '03';
 }
 
-.darkmode{
-    background: #050609;
-    color: #FAF9F6;
+#friends:before {
+  content: '04';
 }
 
-.copyright{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    bottom: 20px;
-    text-align: center;
-    font-size: 12px;
+#friends a:before {
+  content: '-';
+  position: absolute;
+  left: 19px;
+}
+
+#food:before {
+  content: '05';
+}
+
+.title {
+  font-weight: 600;
+  font-size: 15px;
 }
 
 
-@media screen and (min-width:768px) {
-    body{
-        margin:20px 0 0;
-    }
+.NOWSHOWING {
+  padding: 10px 20px;
+  border: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 3;
+  font-size: 12px;
+}
+
+.WBC {
+  white-space: nowrap;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.footer {
+  padding-top: 10px;
+}
+
+.footer a {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  padding: 0 30px 30px 0;
+}
+
+svg:hover {
+  transform: scale(1.1);
+  transition: all 1ms;
+}
+
+.lights {
+  float: right;
+  display: inline-block;
+  padding: 0 0 20px 20px;
+}
+
+.darkmode {
+  background: #050609;
+  color: #FAF9F6;
+}
+
+.copyright {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  text-align: center;
+  font-size: 12px;
 }
