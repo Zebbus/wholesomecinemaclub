@@ -57,6 +57,7 @@ body {
   padding: 0px;
   margin: 0 auto;
   font-weight: 100;
+  counter-reset: count;
 }
 
 .logo {
@@ -78,6 +79,7 @@ a:visited {
   margin-left: 20px;
   padding-left: 20px;
   border-left: 1px solid;
+
 }
 
 #nowshowing {
@@ -89,32 +91,14 @@ a:visited {
   position: absolute;
   left: 0;
   font-size: 10;
-}
-
-#home:before {
-  content: '01';
-}
-
-#nowshowing:before {
-  content: '02';
-}
-
-#work:before {
-  content: '03';
-}
-
-#friends:before {
-  content: '04';
+  counter-increment: count;
+  content: "0"counter(count);
 }
 
 #friends a:before {
   content: '-';
   position: absolute;
   left: 19px;
-}
-
-#food:before {
-  content: '05';
 }
 
 .title {
@@ -155,7 +139,6 @@ svg:hover {
 
 .lights {
   float: right;
-  display: inline-block;
   padding: 0 0 20px 20px;
 }
 
