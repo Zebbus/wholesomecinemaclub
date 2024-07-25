@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Columns Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Mulish', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0 0;
+        }
+        .logo {
+            font-size: 32px;
+        }
+        .logo .jorden {
+            font-family: 'Lora', serif;
+        }
+        .logo .bastian {
+            font-family: 'Mulish', sans-serif;
+        }
+        nav {
+            text-align: center;
+            padding: 10px 0;
+            font-family: 'Lora', serif;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            margin: 0 10px;
+        }
+        nav .icon {
+            font-family: 'Mulish', sans-serif;
+            margin-left: 10px;
+        }
+        .mobile-nav {
+            display: none;
+        }
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 1px solid;
+        }
+        .column-left {
+            flex: 1 1 50%;
+            box-sizing: border-box;
+            padding: 20px 0;
+        }
+        .column-right {
+            flex: 1 1 50%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .box {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid;
+        }
+        .box h2 {
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        .box p {
+            font-size: 15px;
+        }
+        .column-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .column-left {
+                flex: 0 1 75%;
+            }
+            .column-right {
+                flex: 0 1 25%;
+            }
+            .mobile-nav {
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
+            .mobile-nav a {
+                display: inline-block;
+                margin: 0 10px;
+            }
+            nav a {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="jorden">Jorden</span><span class="bastian">Bastian</span>
+        </div>
+    </header>
+    <nav>
+        <a href="https://www.linkedin.com" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:example@example.com" class="icon"><i class="fas fa-envelope"></i></a>
+    </nav>
+    <div class="mobile-nav">
+        <a href="#box1">Box 1</a> |
+        <a href="#box2">Box 2</a> |
+        <a href="#box3">Box 3</a> |
+        <a href="#box4">Box 4</a>
+    </div>
+    <div class="container">
+        <div class="column-left">
+            <div id="box1" class="box">
+                <h2>Header</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="box2" class="box">
+                <h2>Header</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="box3" class="box">
+                <h2>Header</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="box4" class="box">
+                <h2>Header</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        <div class="column-right">
+            <img src="https://via.placeholder.com/800x1200" alt="Placeholder Image">
+        </div>
+    </div>
+</body>
+</html>
