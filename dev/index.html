@@ -50,12 +50,12 @@
             border-top: 1px solid;
         }
         .column-left {
-            flex: 1 1 50%;
+            flex: 1 1 calc(50% - 20px);
+            margin: 20px;
             box-sizing: border-box;
         }
         .column-right {
             flex: 1 1 50%;
-            margin-left: 20px;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -83,7 +83,7 @@
         }
         @media (max-width: 768px) {
             .column-left {
-                flex: 0 1 60%;
+                flex: 0 1 calc(60% - 20px);
             }
             .column-right {
                 flex: 0 1 40%;
