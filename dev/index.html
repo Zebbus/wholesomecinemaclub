@@ -84,10 +84,10 @@
         }
         @media (max-width: 768px) {
             .column-left {
-                flex: 0 1 calc(70% - 20px);
+                flex: 0 1 60%;
             }
             .column-right {
-                flex: 0 1 30%;
+                flex: 0 1 calc(40% - 20px);
             }
             .mobile-nav {
                 display: block;
@@ -98,9 +98,6 @@
                 display: inline-block;
                 margin: 0 10px;
             }
-            nav a {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -110,10 +107,6 @@
             <span class="jorden">Jorden</span><span class="bastian">Bastian</span>
         </div>
     </header>
-    <nav>
-        <a href="https://www.linkedin.com" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:example@example.com" class="icon"><i class="fas fa-envelope"></i></a>
-    </nav>
     <div class="mobile-nav">
         <a href="#box1">Bio</a> |
         <a href="#box2">Growth</a> |
@@ -121,6 +114,10 @@
         <a href="#box4">Management</a> |
         <a href="#box5">Clients</a>
     </div>
+    <nav>
+        <a href="https://www.linkedin.com" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:example@example.com" class="icon"><i class="fas fa-envelope"></i></a>
+    </nav>
     <div class="container">
         <div class="column-left">
             <div id="box1" class="box">
