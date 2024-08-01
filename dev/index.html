@@ -24,6 +24,7 @@
         }
         .logo .bastian {
             font-family: 'Mulish', sans-serif;
+            font-weight: 600;
         }
         nav {
             text-align: center;
@@ -66,6 +67,9 @@
         .box {
             padding: 20px 0;
             border-bottom: 1px solid;
+            cursor: pointer;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
         }
         .box h2 {
             font-family: 'Lora', serif;
@@ -77,6 +81,25 @@
         .box p {
             font-size: 15px;
         }
+        .box .summary {
+            display: block;
+        }
+        .box .more-content {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-out;
+        }
+        .box.active .more-content {
+            height: auto;
+        }
+        .box button {
+            font-family: 'Mulish', sans-serif;
+            font-style: italic;
+            border: none;
+            background: none;
+            color: black;
+            cursor: pointer;
+        }
         .column-right img {
             width: 100%;
             height: 100%;
@@ -84,10 +107,10 @@
         }
         @media (max-width: 768px) {
             .column-left {
-                flex: 0 1 70%;
+                flex: 0 1 60%;
             }
             .column-right {
-                flex: 0 1 calc(30% - 20px);
+                flex: 0 1 40%;
             }
             .mobile-nav {
                 display: block;
@@ -118,32 +141,77 @@
     </div>
     <div class="container">
         <div class="column-left">
-            <div id="box1" class="box">
+            <div id="box1" class="box fixed">
                 <h2>"Helping you achieve the business success you dream of, that’s what I love doing most."</h2>
-                <p>With a background in international law and business, I bring over 20 years of global experience to management consultancy, with a focus on organizational growth, turnaround management and human capital development.
-
-                    Through this experience, I support companies in Biotech and Life Sciences move through their various development stages. From building the company at its inception, to reshaping existing businesses, or turning around companies that need to change course.</p>
+                <p>With a background in international law and business, I bring over 20 years of global experience to management consultancy, with a focus on organizational growth, turnaround management and human capital development.</p>
             </div>
             <div id="box2" class="box">
                 <h2>Growth</h2>
-                <p>How do you grow from a small business of only a handful of people to a mid-sized company? How to know what is required not just today, but also next month and next year? What kind of people do you need to hire to support and sustain your growth? These questions all come up as you’ve established the scientific basis of your company and need to build an organization around that.</p>
+                <p class="summary">How do you grow from a small business of only a handful of people to a mid-sized company? <button onclick="toggleBox(event)">read more</button></p>
+                <div class="more-content">
+                    <p>How to know what is required not just today, but also next month and next year? What kind of people do you need to hire to support and sustain your growth? These questions all come up as you’ve established the scientific basis of your company and need to build an organization around that.</p>
+                </div>
             </div>
             <div id="box3" class="box">
                 <h2>Change</h2>
-                <p>Working alongside the CEO, CSO, and CBO, acting as COO, CHRO or VP of People, I build your   company with you. Establishing in-house support functions, developing professional relationships with vendors for IT, legal, immigration, tax, finance, and admin support. Creating hiring plans, carrying out executive searches, and generally taking on all those things you used to be doing on top of you day to day job, allowing you to bring your focus back to where it needs to be.</p>
+                <p class="summary">Working alongside the CEO, CSO, and CBO, acting as COO, CHRO or VP of People, I build your company with you. <button onclick="toggleBox(event)">read more</button></p>
+                <div class="more-content">
+                    <p>Establishing in-house support functions, developing professional relationships with vendors for IT, legal, immigration, tax, finance, and admin support. Creating hiring plans, carrying out executive searches, and generally taking on all those things you used to be doing on top of you day to day job, allowing you to bring your focus back to where it needs to be.</p>
+                </div>
             </div>
             <div id="box4" class="box">
                 <h2>Management</h2>
-                <p>Depending on where your company is in its development, you may need to tackle some tricky business decisions for the future, requiring senior expertise that you don’t need every day. Or your business may have hit a rough patch, requiring immediate hands-on, sleeves rolled-up support, for only a couple of months. Setting up shop in a new country, quickly requiring a new team? As an in-house consultant for a fixed period of time, these are the type of challenges I take on.</p>
+                <p class="summary">Depending on where your company is in its development, you may need to tackle some tricky business decisions for the future. <button onclick="toggleBox(event)">read more</button></p>
+                <div class="more-content">
+                    <p>Or your business may have hit a rough patch, requiring immediate hands-on, sleeves rolled-up support, for only a couple of months. Setting up shop in a new country, quickly requiring a new team? As an in-house consultant for a fixed period of time, these are the type of challenges I take on.</p>
+                </div>
             </div>
             <div id="box5" class="box">
                 <h2>Clients</h2>
-                <p>My clients are founders, investors, chairmen, CEO’s and other C-level executives of companies in Biotech and Life Sciences that are experiencing rapid growth, need restructuring, or can use some support in their Leadership team.</p>
+                <p class="summary">My clients are founders, investors, chairmen, CEO’s and other C-level executives of companies in Biotech and Life Sciences. <button onclick="toggleBox(event)">read more</button></p>
+                <div class="more-content">
+                    <p>That are experiencing rapid growth, need restructuring, or can use some support in their Leadership team.</p>
+                </div>
             </div>
         </div>
         <div class="column-right">
-            <img src="/dev/JordenBastian.jpg" alt="Placeholder Image">
+            <img src="https://via.placeholder.com/800x1200" alt="Placeholder Image">
         </div>
     </div>
+    <script>
+        function toggleBox(event) {
+            const boxes = document.querySelectorAll('.box:not(.fixed)');
+            boxes.forEach(box => {
+                if (box !== event.target.closest('.box')) {
+                    box.classList.remove('active');
+                    box.querySelector('.more-content').style.height = '0';
+                }
+            });
+            const box = event.target.closest('.box');
+            const moreContent = box.querySelector('.more-content');
+            const summaryHeight = box.querySelector('.summary').scrollHeight + box.querySelector('h2').scrollHeight;
+            if (box.classList.contains('active')) {
+                box.classList.remove('active');
+                moreContent.style.height = '0';
+                box.style.maxHeight = summaryHeight + 'px';
+            } else {
+                box.classList.add('active');
+                moreContent.style.height = moreContent.scrollHeight + 'px';
+                box.style.maxHeight = summaryHeight + moreContent.scrollHeight + 'px';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const boxes = document.querySelectorAll('.box:not(.fixed)');
+            boxes.forEach(box => {
+                const summaryHeight = box.querySelector('.summary').scrollHeight + box.querySelector('h2').scrollHeight;
+                box.style.maxHeight = summaryHeight + 'px';
+            });
+            const activeBox = document.querySelector('.box.fixed');
+            if (activeBox) {
+                activeBox.style.maxHeight = activeBox.scrollHeight + 'px';
+            }
+        });
+    </script>
 </body>
 </html>
