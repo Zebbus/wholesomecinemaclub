@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Two Columns Page</title>
+    <title>Jorden Bastian - Scale-up, Change & Interim management</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,10 +15,10 @@
         }
         header {
             text-align: center;
+            margin-bottom: 10px;s
         }
         .logo {
             font-size: 32px;
-            margin-bottom: 10px;
         }
         .logo .jorden {
             font-family: 'Lora', serif;
@@ -27,7 +27,10 @@
             font-family: 'Mulish', sans-serif;
             font-weight: 600;
         }
-
+        .subheader{
+            font-style: italic;
+            font-size: 12px;
+        }
         nav {
             margin: 0 auto;
             max-width: 1024px;
@@ -38,23 +41,33 @@
         nav a {
             text-decoration: none;
             color: black;
+            transition:all 50ms ease;
+        }
+        nav a:hover, nav a:active {
+            text-decoration: none;
+            color: white;
         }
         nav .icon {
             font-family: 'Mulish', sans-serif;
             color: black;
             margin: 0 3px;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
         td {
+            transition: all 0.5s ease;
             border: solid 1px;
+            color: black;
             padding: 10px 0;
         }
-
+        td:hover, td:active{
+            background: black;
+        }
+        td:hover a, td:active a{
+            color: white;
+        }
         .container {
             max-width: 1002px;
             margin: 0 auto;
@@ -62,7 +75,7 @@
             flex-wrap: wrap;
             border: 1px solid;
             border-top: 0;
-            padding: 10px;
+            padding: 10px 10px 20px;
         }
         .column-left {
             flex: 1 1 50%;
@@ -79,7 +92,7 @@
             padding: 0 10px;
         }
         .box {
-            padding: 20px 0;
+            padding: 20px 0 0;
             border-bottom: 1px solid;
             cursor: pointer;
             overflow: hidden;
@@ -89,11 +102,12 @@
             font-family: 'Lora', serif;
             font-size: 32px;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 5px;
             font-weight: normal;
         }
         .box p {
             font-size: 15px;
+            margin-top: 0;
         }
         .box .summary {
             display: block;
@@ -108,17 +122,31 @@
         }
         .box button {
             font-family: 'Mulish', sans-serif;
-            font-style: italic;
-            border: none;
+            border: 1px solid;
+            border-bottom: 0;
             background: none;
             color: black;
             cursor: pointer;
+            float: right;
+        }
+        .box button:hover{
+            background: black;
+            color: white;
         }
         .column-right img {
             width: 100%;
             height: auto;
             object-fit: cover;
             align-self: flex-start;
+        }
+        .copyright {
+            margin: 20px auto;
+            font-size: 12px;
+            text-align: center;
+        }
+        .copyright a{
+            text-decoration: none;
+            color: black;
         }
         @media (max-width: 768px) {
             .container {
@@ -151,6 +179,9 @@
         <div class="logo">
             <span class="jorden">Jorden</span><span class="bastian">Bastian</span>
         </div>
+        <div class="subheader">
+            Scale-up, Change & Interim management
+        </div>
     </header>
     <nav>
         <table>
@@ -169,41 +200,54 @@
             <img src="/dev/JordenBastian.jpg" alt="Placeholder Image">
         </div>
         <div class="column-left">
-            <div id="box1" class="box fixed">
+            <div id="box1" class="box" onclick="toggleBox(event)">
                 <h2>"Helping you achieve the business success you dream of, that’s what I love doing most."</h2>
-                <p>With a background in international law and business, I bring over 20 years of global experience to management consultancy, with a focus on organizational growth, turnaround management and human capital development.</p>
+                <p class="summary">With a background in international law and business, I bring over 20 years of global experience to management consultancy, with a focus on organizational growth, turnaround management and human capital development.</p>
+                <div class="more-content">
+                    <p>Through this experience, I support companies in Biotech and Life Sciences move through their various development stages. From building the company at its inception, to reshaping existing businesses, or turning around companies that need to change course.</p>
+                    <p>Having worked across continents, I navigated business landscapes from the Middle East and Southeast Asia to the United States, Netherlands, Poland, and Spain. This international exposure has enriched my understanding of cultural nuances and global dynamics, enabling me to drive change and transformation on a global scale.</p> 
+                    <p>Armed with an LLM in European and International Law from Tilburg University, the Netherlands and Université de Montpellier, France, I’m able to merge legal expertise with strategic business insights. This fusion has been instrumental in guiding companies through build-up and scale-up phases, post-acquisition integration, turnaround management, restructuring, and reshaping initiatives.</p> 
+                    <p>Through coursework on business and strategy at Harvard Business School and Rotterdam School of Management I further refined my skills. Additionally, completing the ScaleUp Board Program by ScaleUpNation in spring 2023 has equipped me with valuable insights into scaling strategies tailored for biotech ventures.</p>
+                    <p>As a firm believer in health and wellbeing, I am a proud co-founder and investor of YG Studios, a boutique yoga, meditation, and high intensity training studio, in my hometown of Rotterdam, the Netherlands.</p>
+                    <p>I get a lot of energy from helping my clients achieve their objectives while putting my global experience, legal and business background, and pragmatic approach to work, guiding their organizations toward sustainable growth and success.</p>
+                </div>
+                <button onclick="toggleBox(event)">read more</button>
             </div>
             <div id="box2" class="box" onclick="toggleBox(event)">
                 <h2>Growth</h2>
-                <p class="summary">How do you grow from a small business of only a handful of people to a mid-sized company? <button onclick="toggleBox(event)">read more</button></p>
+                <p class="summary">How do you grow from a small business of only a handful of people to a mid-sized company?</p>
                 <div class="more-content">
                     <p>How to know what is required not just today, but also next month and next year? What kind of people do you need to hire to support and sustain your growth? These questions all come up as you’ve established the scientific basis of your company and need to build an organization around that.</p>
                 </div>
+                <button onclick="toggleBox(event)">read more</button>
             </div>
             <div id="box3" class="box" onclick="toggleBox(event)">
                 <h2>Change</h2>
-                <p class="summary">Working alongside the CEO, CSO, and CBO, acting as COO, CHRO or VP of People, I build your company with you. <button onclick="toggleBox(event)">read more</button></p>
+                <p class="summary">Working alongside the CEO, CSO, and CBO, acting as COO, CHRO or VP of People, I build your company with you.</p>
                 <div class="more-content">
                     <p>Establishing in-house support functions, developing professional relationships with vendors for IT, legal, immigration, tax, finance, and admin support. Creating hiring plans, carrying out executive searches, and generally taking on all those things you used to be doing on top of you day to day job, allowing you to bring your focus back to where it needs to be.</p>
                 </div>
+                <button onclick="toggleBox(event)">read more</button>
             </div>
             <div id="box4" class="box" onclick="toggleBox(event)">
                 <h2>Management</h2>
-                <p class="summary">Depending on where your company is in its development, you may need to tackle some tricky business decisions for the future. <button onclick="toggleBox(event)">read more</button></p>
+                <p class="summary">Depending on where your company is in its development, you may need to tackle some tricky business decisions for the future.</p>
                 <div class="more-content">
                     <p>Or your business may have hit a rough patch, requiring immediate hands-on, sleeves rolled-up support, for only a couple of months. Setting up shop in a new country, quickly requiring a new team? As an in-house consultant for a fixed period of time, these are the type of challenges I take on.</p>
                 </div>
+                <button onclick="toggleBox(event)">read more</button>
             </div>
             <div id="box5" class="box" onclick="toggleBox(event)">
                 <h2>Clients</h2>
-                <p class="summary">My clients are founders, investors, chairmen, CEO’s and other C-level executives of companies in Biotech and Life Sciences. <button onclick="toggleBox(event)">read more</button></p>
+                <p class="summary">My clients are founders, investors, chairmen, CEO’s and other C-level executives of companies in Biotech and Life Sciences.</p>
                 <div class="more-content">
                     <p>That are experiencing rapid growth, need restructuring, or can use some support in their Leadership team.</p>
                 </div>
+                <button onclick="toggleBox(event)">read more</button>
             </div>
         </div>
-        <div class="copyright">© wholesomecinemaclub</div>
     </div>
+    <div class="copyright"><a href="https://wholesomecinema.club" target="_blank" alt="wholesome cinema club">© wholesomecinemaclub</a></div>
     <script>
         function toggleBox(event) {
             event.stopPropagation(); // Prevent event bubbling
@@ -216,14 +260,17 @@
                 }
             });
             const moreContent = box.querySelector('.more-content');
+            const button = box.querySelector('button');
             const summaryHeight = box.querySelector('.summary').scrollHeight + box.querySelector('h2').scrollHeight + 40; // Including padding
             if (box.classList.contains('active')) {
                 box.classList.remove('active');
                 moreContent.style.height = '0';
+                button.innerHTML = 'read more';
                 box.style.maxHeight = summaryHeight + 'px';
             } else {
                 box.classList.add('active');
                 moreContent.style.height = moreContent.scrollHeight + 'px';
+                button.innerHTML = 'close';
                 box.style.maxHeight = summaryHeight + moreContent.scrollHeight + 'px';
             }
         }
