@@ -251,11 +251,12 @@
         function toggleBox(event) {
             event.stopPropagation(); // Prevent event bubbling
             const box = event.currentTarget.closest('.box');
-            const boxes = document.querySelectorAll('.box:not(.fixed)');
+            const boxes = document.querySelectorAll('.box:not(.fixed)'); 
             boxes.forEach(b => {
                 if (b !== box) {
                     b.classList.remove('active');
                     b.querySelector('.more-content').style.height = '0';
+                    b.querySelector('button').innerHTML = 'read more';
                 }
             });
             const moreContent = box.querySelector('.more-content');
