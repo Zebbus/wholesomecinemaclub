@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Engineers | Partners in Tech & Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === THEMA VARIABELEN === */
+        :root, [data-theme="light"] {
+            --bg-color: #f0f0f0;
+            --text-color: #1a1a1a;
+            --box-bg: #ffffff;
+            --border-color: #1a1a1a;
+            --shadow-color: #1a1a1a;
+            --accent-color: #00FF41; 
+            --accent-text: #1a1a1a;
+            --grid-color: rgba(0, 0, 0, 0.05);
+            
+            --panel-bg-flat: #d9d9d9;
+            --box-bg-flat: #ffffff;
+            --screen-bg: #424242; 
+            --screen-text: #00FF41;
+            --inset-shadow: rgba(0,0,0,0.3);
+            
+            --overlay-bg: rgba(240, 240, 240, 0.8);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --box-bg: #222222;
+            --border-color: #555555;
+            --shadow-color: #000000;
+            --accent-color: #00FF41;
+            --accent-text: #1a1a1a;
+            --grid-color: rgba(255,255,255,0.05);
+
+            --panel-bg-flat: #2a2a2a;
+            --box-bg-flat: #1a1a1a;
+            --screen-bg: #424242; 
+            --screen-text: #00FF41;
+            --inset-shadow: rgba(0,0,0,0.8);
+
+            --overlay-bg: rgba(26, 26, 26, 0.8);
+        }
+
+        [data-theme="wireframe"] {
+            --bg-color: #0a0a0a;
+            --text-color: #00FF41;
+            --box-bg: #141414;
+            --border-color: #00FF41;
+            --shadow-color: #00FF41;
+            --accent-color: #00FF41;
+            --accent-text: #0a0a0a;
+            --grid-color: rgba(0, 255, 65, 0.1);
+
+            --panel-bg-flat: #0a0a0a;
+            --box-bg-flat: #050505;
+            --screen-bg: #424242; 
+            --screen-text: #00FF41;
+            --inset-shadow: rgba(0, 255, 65, 0.25);
+
+            --overlay-bg: rgba(10, 10, 10, 0.85);
+        }
+
+        /* === BASIS STYLING === */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 80px 20px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* === ANNOUNCEMENT BANNER === */
+        .announcement-banner {
+            width: 100%;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .announcement-banner.hidden { transform: translateY(-100%); }
+        .banner-content { display: flex; align-items: center; gap: 15px; text-align: center; }
+        .banner-led { color: var(--accent-color); animation: blink 1s step-end infinite; }
+        .banner-link { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid var(--accent-color); transition: all 0.2s; margin-left: 5px; }
+        .banner-link:hover { background-color: var(--accent-color); color: var(--text-color); }
+
+        .banner-close {
+            position: absolute;
+            right: 20px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 10px;
+            padding: 3px 8px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--border-color);
+            transition: all 0.1s;
+        }
+        .banner-close:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--border-color); }
+
+        /* === BOX STYLING === */
+        .box {
+            background-color: var(--box-bg);
+            border: 3px solid var(--border-color);
+            box-shadow: 8px 8px 0px var(--shadow-color);
+            padding: 30px;
+            margin-bottom: 0;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .connector { width: 3px; height: 30px; background-color: var(--border-color); margin: 0 auto; }
+        h1, h2 { margin-top: 0; font-weight: 700; text-transform: none; letter-spacing: -0.5px; }
+
+        /* Logo Setup */
+        .logo { display: inline-block; color: var(--text-color); vertical-align: middle; margin-right: 10px; }
+        .logo svg { width: 110px; height: auto; display: block; transition: color 0.3s; }
+        .logo-text { display: inline-block; width: 260px; line-height: 52px; vertical-align: top; margin-top: 1px; font-size: 52px; font-weight: bold; }
+        .subtitle { font-size: 14px; margin: 10px 0; }
+
+        /* Control Panel */
+        .control-panel {
+            background-color: var(--panel-bg-flat);
+            border: 3px solid var(--border-color);
+            box-shadow: 8px 8px 0px var(--shadow-color);
+            padding: 15px 20px; 
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+        }
+
+        .panel-header { display: flex; align-items: center; }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-right: 20px; border-right: 2px dashed var(--border-color); height: 76px; }
+
+        .hw-btn {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--text-color);
+            background-color: var(--box-bg-flat);
+            border: 3px solid var(--border-color);
+            padding: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: none; 
+            transition: all 0.05s linear;
+            box-sizing: border-box;
+            height: 34px;
+            width: 90px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; 
+        }
+
+        .hw-btn::after {
+            content: ''; position: absolute; top: 4px; right: 4px; width: 5px; height: 5px;
+            border-radius: 50%; background-color: var(--border-color); opacity: 0.2;
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5); transition: all 0.2s;
+        }
+
+        .hw-btn:active, .hw-btn.active-state, .hw-btn.active-page { transform: translate(2px, 2px); box-shadow: inset 2px 2px 0px var(--inset-shadow); background-color: var(--panel-bg-flat); }
+        .hw-btn:active::after, .hw-btn.active-state::after, .hw-btn.active-page::after { background-color: var(--accent-color); opacity: 1; box-shadow: 0 0 5px var(--accent-color), inset 1px 1px 2px rgba(255,255,255,0.4); }
+        .hw-btn:hover:not(:active):not(.active-state):not(.active-page) { background-color: var(--accent-color); color: var(--accent-text); }
+
+        .knob-row { display: flex; align-items: flex-end; gap: 20px; }
+        .knob-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 76px; }
+        .knob-container { position: relative; display: flex; flex-direction: column; align-items: center; }
+
+        .knob-labels { font-family: 'Courier New', monospace; font-size: 10px; font-weight: bold; display: flex; width: 130%; justify-content: space-between; position: absolute; top: -15px; color: var(--text-color); opacity: 0.7; }
+        .knob-base { width: 45px; height: 45px; box-sizing: border-box; border-radius: 50%; background-color: var(--box-bg-flat); border: 3px solid var(--border-color); box-shadow: 4px 4px 0px var(--shadow-color); position: relative; cursor: pointer; }
+        .knob-dial { width: 100%; height: 100%; border-radius: 50%; position: absolute; top: 0; left: 0; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .knob-dial::after { content: ''; position: absolute; top: 4px; left: calc(50% - 2px); width: 4px; height: 12px; background-color: var(--border-color); border-radius: 2px; }
+        
+        .knob-title { font-family: 'Courier New', monospace; font-size: 10px; font-weight: bold; color: var(--text-color); opacity: 0.7; margin-top: 8px; display: flex; align-items: center; gap: 3px;}
+        
+        /* De info-knop naast HEARTBEAT */
+        .info-btn { background: none; border: none; color: var(--text-color); font-family: 'Courier New', monospace; font-weight: bold; font-size: 10px; cursor: pointer; padding: 0; opacity: 0.8; transition: color 0.2s; }
+        .info-btn:hover { color: var(--accent-color); opacity: 1; text-shadow: 0 0 5px var(--accent-color); }
+
+        .output-screen { background-color: var(--screen-bg); color: var(--screen-text); font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.4; padding: 8px 10px; border: 3px solid var(--border-color); box-shadow: inset 4px 4px 0px var(--inset-shadow); width: 260px; height: 76px; display: flex; flex-direction: column; justify-content: flex-end; box-sizing: border-box; overflow: hidden; transition: background-color 0.3s; }
+        .screen-line { display: block; white-space: nowrap; }
+        
+        .cursor { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .tech-label { position: absolute; top: -12px; left: 10px; background: var(--bg-color); padding: 0 5px; font-size: 10px; font-weight: bold; z-index: 20; color: var(--border-color); }
+
+        .content-box { text-align: left; line-height: 1.6; }
+        .content-box h2 { text-align: center; margin-bottom: 20px; font-size: 24px; }
+        .link-accent { color: var(--text-color); text-decoration: none; border-bottom: 2px solid var(--accent-color); font-weight: bold; }
+        .link-accent:hover { background-color: var(--accent-color); color: var(--accent-text); }
+        .trusted-by { margin-top: 40px; border-top: 2px dashed var(--border-color); padding-top: 20px; text-align: center; }
+        .logos { display: flex; justify-content: space-around; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 20px; }
+        .logo-placeholder { font-weight: bold; opacity: 0.6; filter: grayscale(100%); transition: all 0.3s; }
+        .logo-placeholder:hover { opacity: 1; filter: grayscale(0%); color: var(--accent-color); background: var(--accent-text); padding: 5px; }
+
+        /* Accordion Styling */
+        .accordion-box { padding: 0; overflow: hidden; }
+        .accordion-header { background-color: var(--box-bg); color: var(--text-color); padding: 15px 30px; font-family: inherit; font-weight: bold; text-transform: uppercase; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease-in-out; user-select: none; }
+        .accordion-header:hover { background-color: var(--accent-color); color: var(--accent-text); }
+        .accordion-title { flex-grow: 1; text-align: center; }
+        .accordion-icon { font-family: 'Courier New', monospace; font-weight: bold; font-size: 14px; }
+        .accordion-content-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); background-color: var(--box-bg); }
+        .accordion-box.open .accordion-content-wrapper { max-height: 800px; }
+        .accordion-content { margin: 0px 25px 30px; border-top: 2px dashed var(--border-color); text-align: left; font-size: 14px; line-height: 1.6; }
+
+        .data-list { list-style: none; padding: 0; font-family: 'Courier New', monospace; }
+        .data-list li { margin-bottom: 8px; display: flex; gap: 15px; }
+        .data-list span:first-child { color: var(--border-color); opacity: 0.6; width: 80px; }
+
+        .terminal-input { background: var(--bg-color); border: 2px solid var(--border-color); padding: 10px; font-family: 'Courier New', monospace; color: var(--text-color); display: flex; align-items: center; margin-top: 15px; }
+        .terminal-input span { margin-right: 10px; opacity: 0.5; }
+
+        .footer-box { max-width: 400px; font-size: 12px; }
+        .footer-links a { color: var(--text-color); text-decoration: none; border-bottom: 1px solid var(--text-color); margin: 0 10px; }
+
+        /* === MODAL STYLING (Voor Heartbeat Info) === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--overlay-bg);
+            backdrop-filter: blur(3px);
+            z-index: 2000;
+            display: none; /* Standaard verborgen */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            margin: 0 20px;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 10px; margin-bottom: 15px;
+        }
+
+        .modal-title { font-family: 'Courier New', monospace; font-weight: bold; font-size: 14px; }
+
+        /* Responsive */
+        .mobile-actions { display: none; }
+        .hardware-drawer { display: flex; align-items: center; gap: 20px; }
+        
+        @media (max-width: 768px) {
+            .logo svg { width: 80px; }
+            .logo-text { font-size: 32px; line-height: 38px; width: auto; display: block; margin-top: 15px; }
+            .box { padding: 20px; }
+            .accordion-header { padding: 15px 20px; }
+            .accordion-content { padding: 20px; }
+
+            .banner-content { flex-direction: column; gap: 5px; text-align: left; align-items: flex-start; margin-right: 30px; }
+            .announcement-banner { padding: 10px 15px; justify-content: flex-start; }
+            .banner-close { right: 10px; top: 10px; }
+            body { padding-top: 90px; } 
+
+            .control-panel { flex-direction: column; align-items: center; }
+            .panel-header { width: 100%; display: flex; gap: 8px; }
+            .nav-grid { flex: 1; border-right: none; padding-right: 0; gap: 5px; }
+            .hw-btn { width: 100%; }
+
+            .mobile-actions { display: flex; flex-direction: column; gap: 8px; width: 40px; }
+            .square-btn { width: 100%; height: 34px; font-size: 16px; }
+            .square-btn.active-state .sys-icon { color: var(--accent-color); text-shadow: 0 0 8px var(--accent-color); }
+
+            .hardware-drawer { flex-direction: column; align-items: center; gap: 20px; width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), margin-top 0.4s, padding-top 0.4s; }
+            .hardware-drawer.open { max-height: 500px; margin-top: 20px; padding-top: 20px; border-top: 2px dashed var(--border-color); }
+            .output-screen { width: 100%; max-width: 280px; }
+            .data-list li { flex-direction: column; gap: 2px; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <div class="modal-overlay" id="infoModal">
+        <div class="box modal-box">
+            <div class="modal-header">
+                <span class="modal-title">> SYS.DOCS // HEARTBEAT_WIDGET</span>
+                <button class="banner-close" style="position:static;" onclick="closeInfoModal()">[ X ]</button>
+            </div>
+            <div style="font-size: 14px; line-height: 1.6;">
+                <p style="margin-top:0;"><strong>What is this?</strong></p>
+                <p>This widget displays events captured by different tracking tools.</p>
+                <p style="margin-bottom:0;">Tracking tools are every website's best kept secret. It is our job to implement and configure them, so we wanted to showcase what happens as you navigate the web.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="announcement-banner" id="systemBanner">
+        <div class="banner-content">
+            <span class="banner-led">[ ! ]</span>
+            <span>SYSTEM_BROADCAST: WE ZIJN LIVE MET ONZE NIEUWE TECH STACK // <a href="#" class="banner-link">LEES DE RELEASE NOTES</a></span>
+        </div>
+        <button class="banner-close" onclick="closeBanner()">[ X ]</button>
+    </div>
+
+    <div class="box" style="max-width: 500px;">
+        <div class="tech-label">SYS_01</div>
+        
+        <div class="logo">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg fill="currentColor" width="100%" height="100%" viewBox="0 0 492 493" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                <g><path d="M420.588,335.892l-0,37.671c0,6.041 -4.897,10.938 -10.938,10.938l-80.562,0l-0,26.733c11.754,4.428 20.125,15.784 20.125,29.079c0,17.144 -13.919,31.062 -31.062,31.062c-17.144,0 -31.062,-13.919 -31.062,-31.062c0,-13.295 8.371,-24.651 20.125,-29.079l0,-26.733l-36.313,0l0,-21.875l127.812,0l0,-26.733c-11.754,-4.428 -20.125,-15.784 -20.125,-29.079c0,-17.144 13.919,-31.063 31.062,-31.063c17.144,0 31.063,13.919 31.063,31.063c0,13.295 -8.371,24.651 -20.125,29.079Z"/><path d="M311.196,185l-41.046,0l-0,-21.875l41.046,0c4.428,-11.754 15.784,-20.125 29.079,-20.125c17.144,0 31.063,13.919 31.063,31.063c0,13.716 -8.909,25.367 -21.25,29.478l0,27.459l81.483,0c4.428,-11.754 15.784,-20.125 29.079,-20.125c17.144,0 31.063,13.919 31.063,31.063c0,17.144 -13.919,31.062 -31.063,31.062c-13.295,0 -24.651,-8.371 -29.079,-20.125l-81.483,0l0,24.459c12.341,4.111 21.25,15.763 21.25,29.478c0,17.144 -13.919,31.062 -31.063,31.062c-13.411,0 -24.848,-8.517 -29.193,-20.433l-40.302,-0.443l0.24,-21.874l40.293,0.443c3.046,-7.831 9.178,-14.125 16.899,-17.386l0,-25.308l-57.313,0l-0,-21.875l57.313,0l0,-28.308c-7.822,-3.303 -14.013,-9.719 -17.017,-17.692Z"/></g>
+                <g><path d="M398.713,153.544l0,-35.294l-127.813,0l0,-21.875l36.312,0l0,-35.294c-7.324,-3.916 -12.312,-11.639 -12.312,-20.518c0,-12.832 10.418,-23.25 23.25,-23.25c12.832,0 23.25,10.418 23.25,23.25c0,8.879 -4.988,16.602 -12.312,20.518l0,35.294l80.562,0c6.041,-0 10.938,4.897 10.938,10.938l0,46.232c7.324,3.916 12.312,11.639 12.312,20.518c0,12.832 -10.418,23.25 -23.25,23.25c-12.832,0 -23.25,-10.418 -23.25,-23.25c0,-8.879 4.988,-16.602 12.313,-20.518Z"/></g>
+                <path d="M78.146,386.283c-41.043,-2.186 -74.299,-42.405 -54.386,-81.373c-17.187,-10.122 -24.721,-29.168 -23.665,-49.268c1.029,-19.576 10.544,-39.866 26.537,-52.427c-3.832,-7.967 -5.98,-16.895 -5.98,-26.32c0,-28.969 20.288,-53.237 47.418,-59.359c-1.144,-4.529 -1.752,-9.27 -1.752,-14.151c0,-31.847 25.856,-57.703 57.703,-57.703c3.098,0 6.138,0.245 9.104,0.716c5.902,-26.534 29.599,-46.398 57.9,-46.398c32.735,0 59.312,26.577 59.312,59.312c0,2.882 -0.736,179.368 -0.75,182.625c-0,0.023 -0,0.038 -0,0.046l0,190.502l-0,3.842c0.484,1.235 0.75,2.58 0.75,3.986c0,28.596 -23.216,51.813 -51.812,51.813c-25.824,0 -47.261,-18.934 -51.174,-43.665c-2.879,0.422 -5.824,0.641 -8.82,0.641c-33.353,0 -60.432,-27.079 -60.432,-60.432c-0,-0.799 0.016,-1.595 0.046,-2.387Zm0.082,-248.226c-19.981,1.665 -35.7,18.43 -35.7,38.838c-0,6.142 1.424,11.955 3.96,17.125c10.128,-2.155 18.553,-1.088 25.546,2.093c9.42,4.286 16.68,12.701 21.713,24.593c2.353,5.559 -0.25,11.983 -5.81,14.336c-5.559,2.353 -11.983,-0.25 -14.336,-5.81c-2.601,-6.145 -5.759,-10.993 -10.627,-13.208c-4.718,-2.146 -10.609,-1.57 -18.069,1.196c-14.058,7.894 -22.156,24.177 -22.965,39.569c-0.759,14.437 5.241,28.507 20.88,32.461c3.628,0.917 6.536,3.626 7.707,7.181c1.171,3.555 0.444,7.461 -1.928,10.356c-23.205,28.317 5.478,60.019 36.604,57.566c18.372,-22.441 37.668,-24.901 55.758,-24.635c6.265,0.092 12.347,0.587 18.113,0.381c6.094,-0.217 11.817,-1.172 16.584,-6.102c7.499,-7.756 9.27,-23.456 -4.642,-31.826c-5.172,-3.112 -6.845,-9.838 -3.733,-15.011c3.112,-5.172 9.838,-6.845 15.011,-3.733c28.721,17.281 24.572,49.762 9.09,65.775c-11.677,12.078 -25.776,13.231 -41.44,12.685c-15.341,-0.534 -32.775,-2.793 -48.887,17.669c-0.709,2.922 -1.083,5.974 -1.083,9.113c0,21.28 17.277,38.557 38.557,38.557c3.542,0 6.973,-0.477 10.232,-1.373c4.846,-16.675 17.85,-29.893 34.398,-35.031c5.765,-1.79 11.899,1.437 13.689,7.202c1.79,5.765 -1.437,11.899 -7.202,13.689c-10.792,3.351 -18.981,12.646 -20.718,24.052c-0,0.003 -0.001,0.006 -0.001,0.009c-0.225,1.48 -0.341,2.995 -0.341,4.538c0,16.523 13.415,29.938 29.937,29.938c15.359,0 28.032,-11.591 29.741,-26.495c-0.359,-1.083 -0.554,-2.24 -0.554,-3.443l-0,-187.438l-93.312,0c-0.021,-0 -0.042,-0 -0.064,-0c-2.51,-0.015 -6.003,1.821 -9.545,4.363c-5.887,4.225 -11.646,11.021 -12.54,19.889c-0.617,6.119 1.172,13.054 6.159,20.725c3.29,5.061 1.853,11.841 -3.208,15.132c-5.061,3.29 -11.841,1.853 -15.132,-3.208c-8.335,-12.822 -10.615,-24.616 -9.583,-34.844c1.579,-15.652 11.16,-28.008 21.551,-35.465c8.061,-5.785 16.63,-8.478 22.362,-8.465c0.021,0 0.042,0 0.064,0l93.294,-0c0.162,-38.959 0.704,-169.216 0.704,-171.688c0,-20.662 -16.775,-37.437 -37.438,-37.437c-18.927,0 -34.592,14.076 -37.09,32.321c9.938,5.821 26.095,18.384 28.677,41.731c0.663,6 -3.669,11.41 -9.669,12.073c-6,0.663 -11.41,-3.669 -12.073,-9.669c-2.093,-18.93 -19.106,-26.002 -22.969,-27.864c-0.31,-0.15 -0.611,-0.312 -0.9,-0.486c-4.025,-1.567 -8.403,-2.425 -12.98,-2.425c-19.774,0 -35.828,16.054 -35.828,35.828c0,6.602 1.787,12.791 4.91,18.104c0.001,0.002 0.002,0.004 0.004,0.006c2.335,3.968 7.022,7.54 12.68,10.329c9.454,4.66 21.8,6.934 33.286,3.377c5.699,-1.765 11.754,1.371 13.619,7.01c1.032,1.706 1.61,3.714 1.571,5.852c-0.473,25.506 21.124,38.323 37.189,35.173c5.924,-1.162 11.676,2.705 12.838,8.628c1.162,5.924 -2.705,11.676 -8.628,12.838c-24.338,4.772 -57.448,-11.239 -62.597,-46.172c-13.166,1.164 -26.303,-1.838 -36.949,-7.086c-7.364,-3.63 -13.512,-8.35 -17.887,-13.388Z"/></svg>
+        </div>
+        
+        <div class="logo-text">Marketing Engineers</div>
+        <p class="subtitle">// Partners in Tech & Data</p>
+    </div>
+
+    <div class="connector"></div>
+
+    <nav class="control-panel">
+        <div class="tech-label">CTRL_MODULE</div>
+        
+        <div class="panel-header">
+            <div class="nav-grid">
+                <button class="hw-btn active-page">Home</button>
+                <button class="hw-btn">Stack</button>
+                <button class="hw-btn">Team</button>
+                <button class="hw-btn">Contact</button>
+            </div>
+            
+            <div class="mobile-actions">
+                <button class="hw-btn square-btn">⌖</button>
+                <button class="hw-btn square-btn" id="sysToggleBtn" onclick="toggleMobileSys()">
+                    <span class="sys-icon">⚙</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="hardware-drawer" id="hardwareDrawer">
+            <div class="output-screen display-screen"></div>
+
+            <div class="knob-row">
+                <div class="knob-wrapper">
+                    <div class="knob-container">
+                        <div class="knob-labels">
+                            <span>OFF</span>
+                            <span>ON</span>
+                        </div>
+                        <div class="knob-base" onclick="toggleHeartbeat()">
+                            <div class="knob-dial tracker-dial"></div>
+                        </div>
+                    </div>
+                    <div class="knob-title">
+                        HEARTBEAT 
+                        <button class="info-btn" onclick="openInfoModal()" title="What is this?">[?]</button>
+                    </div>
+                </div>
+
+                <div class="knob-wrapper">
+                    <div class="knob-container">
+                        <div class="knob-labels">
+                            <span>LM</span>
+                            <span>DM</span>
+                            <span>WF</span>
+                        </div>
+                        <div class="knob-base" onclick="rotateThemeKnob()">
+                            <div class="knob-dial theme-dial"></div>
+                        </div>
+                    </div>
+                    <div class="knob-title">THEME</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="connector"></div>
+
+    <div class="box content-box">
+        <div class="tech-label">CORE_MODULE</div>
+        <h2>Welkom<span class="cursor">_</span></h2>
+        <p>Welkom op het digitale hoofdkwartier van de Marketing Engineers. We zijn een Rotterdamse club van gepassioneerde engineers, die marketing teams graag helpen met al hun technische uitdagingen. Hierbij vertalen we complexe technische vraagstukken naar begrijpelijke taal en brengen we de impact op je marketingactiviteiten duidelijk in kaart.</p>
+        
+        <p>We zijn nog druk bezig met het schrijven van Nederlandse artikelen, maar je kunt onze Engelstalige content alvast bekijken onder <a href="#" class="link-accent">our latest work</a>.</p>
+
+        <div class="trusted-by">
+            <p><strong>[ TRUSTED BY ]</strong></p>
+            <div class="logos">
+                <div class="logo-placeholder">DECATHLON</div>
+                <div class="logo-placeholder">RVO</div>
+                <div class="logo-placeholder">WAR CHILD</div>
+                <div class="logo-placeholder">STELLANTIS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="box accordion-box">
+        <div class="accordion-header" onclick="toggleAccordion(this, 'KANTOOR')">
+            <span class="accordion-title">> ONS KANTOOR IN ROTTERDAM <</span>
+            <span class="accordion-icon">[+]</span>
+        </div>
+        <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+                <p>Je vindt onze engineers in de bruisende tech-hub van Rotterdam. Hier bouwen we dagelijks aan complexe data-integraties, strakke web-oplossingen en schaalbare marketing stacks.</p>
+                <ul class="data-list">
+                    <li><span>LOC_</span> Weena 123, 3012 AA, Rotterdam</li>
+                    <li><span>STATUS_</span> Online & Geopend</li>
+                    <li><span>COFFEE_</span> Vers gemalen (Altijd)</li>
+                </ul>
+                <div class="terminal-input">
+                    <span>></span> <em>Plan direct een route via Google Maps...</em>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="connector" style="height: 15px;"></div>
+    
+    <div class="box accordion-box">
+        <div class="accordion-header" onclick="toggleAccordion(this, 'CONTACT')">
+            <span class="accordion-title">> CONTACT ONZE ENGINEERS <</span>
+            <span class="accordion-icon">[+]</span>
+        </div>
+        <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+                <p>Klaar om je marketing stack naar een hoger niveau te tillen? Ping ons direct op de onderstaande kanalen of schiet een ticket in.</p>
+                <ul class="data-list">
+                    <li><span>EMAIL_</span> ping@marketingengineers.nl</li>
+                    <li><span>PHONE_</span> +31 (0)10 123 45 67</li>
+                    <li><span>SLACK_</span> Join onze openbare workspace</li>
+                </ul>
+                <div class="terminal-input">
+                    <span>></span> <em>Typ je bericht of run connect.sh...</em><span class="cursor">_</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="box footer-box">
+        <div class="tech-label">FOOTER_DATA</div>
+        <p style="font-size: 20px; margin: 0;"><strong>[ in ] [ 📞 ]</strong></p>
+        <div class="footer-links" style="margin: 15px 0;">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <p>© Marketing Engineers 2026</p>
+        <p>Built ourselves with <span style="color:var(--accent-color);">💚</span> in Rotterdam</p>
+    </div>
+
+    <script>
+        // --- Modal Logica (Heartbeat Info) ---
+        function openInfoModal() {
+            document.getElementById('infoModal').style.display = 'flex';
+            addLog('> DOCS.HEARTBEAT_OPEN()');
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        // --- Banner Logica ---
+        function closeBanner() {
+            document.getElementById('systemBanner').classList.add('hidden');
+            addLog('> SYS.BANNER_CLOSED()');
+        }
+
+        // --- Accordion Logica ---
+        function toggleAccordion(header, name) {
+            const box = header.parentElement;
+            const icon = header.querySelector('.accordion-icon');
+            
+            box.classList.toggle('open');
+            
+            if (box.classList.contains('open')) {
+                icon.innerText = '[-]';
+                addLog(`> ACC_${name}.OPEN()`);
+            } else {
+                icon.innerText = '[+]';
+                addLog(`> ACC_${name}.CLOSE()`);
+            }
+        }
+
+        // --- Mobile Hardware Toggle ---
+        const hardwareDrawer = document.getElementById('hardwareDrawer');
+        const sysToggleBtn = document.getElementById('sysToggleBtn');
+        let sysOpen = false;
+
+        function toggleMobileSys() {
+            sysOpen = !sysOpen;
+            if (sysOpen) {
+                hardwareDrawer.classList.add('open');
+                sysToggleBtn.classList.add('active-state'); 
+                addLog('> SYS.EXPANDED()');
+            } else {
+                hardwareDrawer.classList.remove('open');
+                sysToggleBtn.classList.remove('active-state');
+                addLog('> SYS.COLLAPSED()');
+            }
+        }
+
+        // --- Thema Draaiknop (LM/DM/WF) ---
+        const themes = ['light', 'dark', 'wireframe'];
+        const themeAngles = [-45, 0, 45]; 
+        let currentThemeIndex = 0; 
+        const themeDial = document.querySelector('.theme-dial');
+        
+        themeDial.style.transform = `rotate(${themeAngles[currentThemeIndex]}deg)`;
+
+        function rotateThemeKnob() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            
+            themeDial.style.transform = `rotate(${themeAngles[currentThemeIndex]}deg)`;
+            document.body.setAttribute('data-theme', newTheme);
+            addLog(`> LOAD: ${newTheme.toUpperCase()}`);
+        }
+
+        // --- Heartbeat Toggle (Draaiknop) ---
+        let heartbeatOn = false;
+        const trackerDial = document.querySelector('.tracker-dial');
+        let heartbeatInterval;
+
+        trackerDial.style.transform = `rotate(-45deg)`;
+
+        const marketingEvents = [
+            'EVENT: btn_click_hero',
+            'PIXEL: meta_lead_gen',
+            'TRACK: scroll_depth_50%',
+            'EVENT: form_start',
+            'GA4: session_engage',
+            'API: data_pushed',
+            'TRACK: video_play'
+        ];
+
+        function toggleHeartbeat() {
+            heartbeatOn = !heartbeatOn;
+            if (heartbeatOn) {
+                trackerDial.style.transform = `rotate(45deg)`;
+                addLog('> HEARTBEAT_ON: true');
+                
+                heartbeatInterval = setInterval(() => {
+                    const randomEvent = marketingEvents[Math.floor(Math.random() * marketingEvents.length)];
+                    addLog(`> ${randomEvent}`);
+                }, 1200); 
+            } else {
+                trackerDial.style.transform = `rotate(-45deg)`;
+                clearInterval(heartbeatInterval);
+                addLog('> HEARTBEAT_OFF: true');
+            }
+        }
+
+        // --- Output Scherm Logica ---
+        const screen = document.querySelector('.display-screen');
+        let logs = ['> SYS.READY']; 
+
+        function addLog(text) {
+            logs.push(text);
+            if (logs.length > 3) { logs.shift(); }
+            renderScreen();
+        }
+
+        function renderScreen() {
+            let html = '';
+            logs.forEach((log, index) => {
+                if (index === logs.length - 1) {
+                    html += `<div class="screen-line">${log}<span class="cursor">_</span></div>`;
+                } else {
+                    html += `<div class="screen-line">${log}</div>`;
+                }
+            });
+            screen.innerHTML = html;
+        }
+
+        renderScreen();
+    </script>
+</body>
+</html>
